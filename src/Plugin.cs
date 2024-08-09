@@ -16,11 +16,14 @@ namespace QM_DataExport
 
         public static string ConfigPath => Path.Combine(Application.persistentDataPath, ModAssemblyName, "config.json");
         public static string ModPersistenceFolder => Path.Combine(Application.persistentDataPath, ModAssemblyName);
+        public static ModConfig Config { get; private set; }
 
         [Hook(ModHookType.AfterConfigsLoaded)]
         public static void AfterConfig(IModContext context)
         {
             Directory.CreateDirectory(ModPersistenceFolder);
+
+            Config = ModConfig.LoadConfig(ConfigPath);
 
             string dataDirectory = Path.Combine(ModPersistenceFolder, "Data");
             DataExportProcessor processor = new DataExportProcessor();

@@ -46,15 +46,20 @@ namespace QM_DataExport
                     }
 
 
-                    string exportFilePath = Path.Combine(exportDirectory, assetName + ".tsv");
+                    string exportFilePath = Path.Combine(exportDirectory, assetName + ".txt");
 
-                    string output = obj.text;
+                    string output;
 
-                    //Save some disk wear 
-                    if(!File.Exists(exportFilePath) || File.ReadAllText(exportFilePath) != output)
+                    if (Plugin.Config.IncludeLocalizationText)
                     {
-                        File.WriteAllText(exportFilePath, output);
+                        output = TranslateTables(obj.text.Split('\r', '\n').ToList());
                     }
+                    else
+                    {
+                        output = obj.text;
+                    }
+
+                    File.WriteAllText(exportFilePath, output);
                 }
                 catch (Exception ex)
                 {
@@ -63,5 +68,58 @@ namespace QM_DataExport
             }
         }
 
+        private string TranslateTables(List<string> source)
+        {
+            int lineNumber = 0;     //one based line number.
+
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+                GameTableParser parser = new GameTableParser(source);
+
+                bool hasIdColumn = false;
+
+                while (parser.MoveNext())
+                {
+                    lineNumber++;
+                    string line = parser.Current;
+
+                    switch (parser.LineType)
+                    {
+                        case LineType.TableHeader:
+                            hasIdColumn = parser.FirstColumn().StartsWith("Id");
+                            sb.AppendLine("LocalText\t" + line);
+                            break;
+                        case LineType.Data:
+                            if (hasIdColumn)
+                            {
+                                //Will return the original text or blank if a localization key is not found.
+                                sb.Append(Localization.Get(parser.FirstColumn())); 
+                                sb.Append('\t');
+                                sb.AppendLine(line);
+                            }
+                            else
+                            {
+                                sb.AppendLine(line);
+                            }
+                            break;
+
+                        case LineType.TableName:
+                        case LineType.TableEnd:
+                        case LineType.Whitespace:
+                            sb.AppendLine(line);
+                            break;
+                        default:
+                            throw new ApplicationException($"Unexpected line type '{parser.LineType}'");
+                    }
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Processing Error on line {lineNumber}");
+            }
+        }
     }
 }
