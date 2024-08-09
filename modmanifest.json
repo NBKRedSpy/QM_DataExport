@@ -1,0 +1,7 @@
+{
+  "UniqueModName": "NBKRedSpy_QM_DataExport",
+  "Assemblies": [
+    "QM_DataExport.dll"
+  ],
+  "Dependencies": []
+}
