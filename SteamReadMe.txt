@@ -1,4 +1,4 @@
-[h1]Quasimorph QM_DataExport[/h1]
+[h1]Quasimorph Data Export[/h1]
 
 
 Extracts the game's config_* data to the app data folder.

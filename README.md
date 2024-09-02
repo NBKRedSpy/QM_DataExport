@@ -1,4 +1,4 @@
-# Quasimorph QM_DataExport
+# Quasimorph Data Export
 
 ![thumbnail icon](media/thumbnail.png)
 
