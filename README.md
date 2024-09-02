@@ -8,7 +8,7 @@ The data can be found at `%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph\Q
 
 The data is extracted directly from the game's resources.  The files often contain more than one table, with each table being preceded by a #<table name>.
 
-The item id's generally do not match the name displayed in the game, so the user will need to find the actual item ids themselves.  
+The item ids generally do not match the name displayed in the game, so the user will need to find the actual item ids themselves.  
 
 # ID Support
 
