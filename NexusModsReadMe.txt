@@ -20,4 +20,4 @@ Thanks!
  
 [b][size=5]Source Code[/size][/b] 
  
-Source code is available on GitHub at https://github.com/NBKRedSpy/QM_DataExport
+Source code is available on GitHub at [url=https://github.com/NBKRedSpy/QM_DataExport]https://github.com/NBKRedSpy/QM_DataExport[/url]
