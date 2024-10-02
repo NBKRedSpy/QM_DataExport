@@ -20,6 +20,7 @@ namespace QM_DataExport
 
             List<string> configFileNames = new List<string>()
             {
+                "config_difficulty",
                 "config_globals",
                 "config_items",
                 "config_monsters",
