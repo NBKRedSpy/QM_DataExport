@@ -14,8 +14,11 @@ namespace QM_DataExport
 {
     internal class DataExportProcessor
     {
+
         public void Export(string exportDirectory)
         {
+            Directory.CreateDirectory(exportDirectory);
+
             LocalizationExport(exportDirectory);
             ConfigDataExport(exportDirectory);
         }
@@ -30,8 +33,6 @@ namespace QM_DataExport
 
         private void ConfigDataExport(string exportDirectory)
         {
-            Directory.CreateDirectory(exportDirectory);
-
             List<string> configFileNames = new List<string>()
             {
                 "config_difficulty",
