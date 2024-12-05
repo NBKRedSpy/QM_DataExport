@@ -16,6 +16,20 @@ namespace QM_DataExport
     {
         public void Export(string exportDirectory)
         {
+            LocalizationExport(exportDirectory);
+            ConfigDataExport(exportDirectory);
+        }
+
+        private void LocalizationExport(string exportDirectory)
+        {
+            TextAsset textAsset = Resources.Load("localization") as TextAsset;
+            string exportFilePath = Path.Combine(exportDirectory, "localization.tsv");
+
+            WriteIfDifferent(exportFilePath, textAsset.text);
+        }
+
+        private void ConfigDataExport(string exportDirectory)
+        {
             Directory.CreateDirectory(exportDirectory);
 
             List<string> configFileNames = new List<string>()
@@ -52,10 +66,8 @@ namespace QM_DataExport
                     string output = obj.text;
 
                     //Save some disk wear 
-                    if(!File.Exists(exportFilePath) || File.ReadAllText(exportFilePath) != output)
-                    {
-                        File.WriteAllText(exportFilePath, output);
-                    }
+                    WriteIfDifferent(exportFilePath, output);
+
                 }
                 catch (Exception ex)
                 {
@@ -64,5 +76,20 @@ namespace QM_DataExport
             }
         }
 
+        /// <summary>
+        /// Writes the file if the data is different from what is already on disk.
+        /// </summary>
+        private void WriteIfDifferent(string exportFilePath, string output)
+        {
+            if (!File.Exists(exportFilePath) || File.ReadAllText(exportFilePath) != output)
+            {
+                File.WriteAllText(exportFilePath, output);
+            }
+        }
+
+
     }
+
+
+
 }
