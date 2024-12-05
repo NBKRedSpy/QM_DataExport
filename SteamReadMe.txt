@@ -1,7 +1,7 @@
 [h1]Quasimorph Data Export[/h1]
 
 
-Extracts the game's config_* data to the app data folder.
+Extracts the game's config_* data and localization text to the app data folder.
 
 The data can be found at [i]%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph\QM_DataExport\Data[/i]. with the extension of .tsv.
 
@@ -21,9 +21,3 @@ Thanks!
 [h1]Source Code[/h1]
 
 Source code is available on GitHub at https://github.com/NBKRedSpy/QM_DataExport
-
-[h1]Change Log[/h1]
-
-[h2]1.1.0[/h2]
-
-Version .8 compatibility
