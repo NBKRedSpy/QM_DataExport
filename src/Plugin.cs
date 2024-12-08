@@ -1,4 +1,5 @@
 ﻿using MGSC;
+using QM_MissionExpirationHighlight;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,17 +13,18 @@ namespace QM_DataExport
 {
     public static class Plugin
     {
+        
         public static string ModAssemblyName => Assembly.GetExecutingAssembly().GetName().Name;
 
-        public static string ConfigPath => Path.Combine(Application.persistentDataPath, ModAssemblyName, "config.json");
-        public static string ModPersistenceFolder => Path.Combine(Application.persistentDataPath, ModAssemblyName);
+        public static ConfigDirectories ConfigDirectories = new ConfigDirectories();
+
 
         [Hook(ModHookType.AfterConfigsLoaded)]
         public static void AfterConfig(IModContext context)
         {
-            Directory.CreateDirectory(ModPersistenceFolder);
+            Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 
-            string dataDirectory = Path.Combine(ModPersistenceFolder, "Data");
+            string dataDirectory = Path.Combine(ConfigDirectories.ModPersistenceFolder, "Data");
             DataExportProcessor processor = new DataExportProcessor();
             processor.Export(dataDirectory);
         }
