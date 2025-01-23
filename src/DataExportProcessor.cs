@@ -38,13 +38,15 @@ namespace QM_DataExport
                 "config_difficulty",
                 "config_globals",
                 "config_items",
-                "config_monsters",
-                "config_drops",
+                "config_items_properties",
+                "config_items_drops",
+                "config_units",
+                "config_units_drops",
                 "config_wounds",
                 "config_mercenaries",
                 "config_spacesandbox",
                 "config_barter",
-                "config_magnum"
+                "config_magnum",
             };
 
             string currentAssetName;
@@ -72,7 +74,8 @@ namespace QM_DataExport
                 }
                 catch (Exception ex)
                 {
-                    throw new ApplicationException($"Error processing asset '{assetName}'. {ex.Message}", ex);
+                    UnityEngine.Debug.LogError($"Error processing asset '{assetName}'. {ex.Message}");
+                    UnityEngine.Debug.LogException(ex);
                 }
             }
         }
