@@ -24,6 +24,10 @@ Source code is available on GitHub at https://github.com/NBKRedSpy/QM_DataExport
 
 [h1]Change Log[/h1]
 
+[h2]1.2.4[/h2]
+
+Added the new 0.9.5 data entries.
+
 [h2]1.2.3[/h2]
 
 0.8.5 compatibility update
