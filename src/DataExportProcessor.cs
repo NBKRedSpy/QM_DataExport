@@ -49,7 +49,8 @@ namespace QM_DataExport
                  "config_spacesandbox",
                  "config_units",
                  "config_units_drops",
-                 "config_wounds"
+                 "config_wounds",
+                 "config_pacts",
             };
 
             string currentAssetName;
