@@ -27,6 +27,7 @@
 
 
 	<ItemGroup>
+		
 		<Reference Include="Assembly-CSharp" publicize="true">
 			<HintPath>$(ManagedPath)Assembly-CSharp.dll</HintPath>
 			<Private>False</Private>
@@ -49,11 +50,14 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
+			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+		<PackageReference Include="Lib.harmony" Version="2.3.3">
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+
 	</ItemGroup>
 	<PropertyGroup>
 	    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
