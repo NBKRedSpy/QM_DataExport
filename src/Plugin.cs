@@ -1,4 +1,5 @@
-﻿using MGSC;
+﻿using HarmonyLib;
+using MGSC;
 using QM_MissionExpirationHighlight;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,13 @@ namespace QM_DataExport
         public static ConfigDirectories ConfigDirectories = new ConfigDirectories();
 
 
-        [Hook(ModHookType.AfterConfigsLoaded)]
-        public static void AfterConfig(IModContext context)
+        [Hook(ModHookType.BeforeBootstrap)]
+        public static void BeforeBootStrap(IModContext context)
         {
-            Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
-
-            string dataDirectory = Path.Combine(ConfigDirectories.ModPersistenceFolder, "Data");
+            Directory.CreateDirectory(ConfigDirectories.DataDirectory);
             DataExportProcessor processor = new DataExportProcessor();
-            processor.Export(dataDirectory);
+            processor.LocalizationExport(ConfigDirectories.DataDirectory);
+            new Harmony("NBKRedSpy_" + ModAssemblyName).PatchAll();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace QM_MissionExpirationHighlight
         /// </summary>
         public string ModPersistenceFolder { get; private set; }
 
+        public string DataDirectory { get; private set; }
+
         /// <summary>
         /// The Quasimorph_Mods folder that is parallel to the game's folder.
         /// This is a workaround for Quasimorph syncing and overwriting all files in the 
@@ -42,6 +44,7 @@ namespace QM_MissionExpirationHighlight
             ModPersistenceFolder = Path.Combine(AllModsConfigFolder, ModAssemblyName);
             ConfigPath = Path.Combine(ModPersistenceFolder, configFileName);
             ConfigFileName = configFileName;
+            DataDirectory = Path.Combine(ModPersistenceFolder, "Data");
 
         }
     }
