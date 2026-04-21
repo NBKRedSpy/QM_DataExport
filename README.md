@@ -2,6 +2,14 @@
 
 ![thumbnail icon](media/thumbnail.png)
 
+
+# Important - Obsolete
+This mod has been replaced with the Simple Data Loader as it has the same ability to export data.
+
+In the next game release this will be removed.
+
+# Docs
+
 Extracts the game's config_* data and localization text to the app data folder.
 
 The data can be found at `%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM_DataExport\Data`. with the extension of .tsv.
